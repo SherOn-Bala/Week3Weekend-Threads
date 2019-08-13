@@ -1,0 +1,29 @@
+<resources>
+    <string name="app_name">Week3Weekend-Threads</string>
+    <string name="title_activity_employee_list">EmployeeListActivity</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Mobile Apps Company</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_new_employee">Add Employee</string>
+    <string name="menu_delete_employee">Delete Employee</string>
+    <string name="menu_update_employee">Update Employee</string>
+    <string name="menu_filter_employees">Filter Employees</string>
+    <string name="first_name">First Name</string>
+    <string name="last_name">Last Name</string>
+    <string name="street_address">Street Address</string>
+    <string name="city">City</string>
+    <string name="state">State</string>
+    <string name="zip_code">Zip Code</string>
+    <string name="tax_id">Tax ID</string>
+    <string name="department">Department</string>
+    <string name="position">Position</string>
+    <string name="enter_employee_info">Enter Employee Info</string>
+    <string name="err_required">Required</string>
+    <string name="name">%s, %s</string>
+    <string name="get_employees">Get Employees</string>
+</resources>

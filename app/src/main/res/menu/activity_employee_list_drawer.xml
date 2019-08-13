@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_employees"
+            android:icon="@drawable/ic_view_list_black_24dp"
+            android:title="@string/menu_home" />
+        <item
+            android:id="@+id/nav_new_employee"
+            android:icon="@drawable/ic_employee_add_black_24dp"
+            android:title="@string/menu_new_employee" />
+        <item
+            android:id="@+id/nav_delete_employee"
+            android:icon="@drawable/ic_delete_employee_black_24dp"
+            android:title="@string/menu_delete_employee" />
+        <item
+            android:id="@+id/nav_update_employee"
+            android:icon="@drawable/ic_update_employee_black_24dp"
+            android:title="@string/menu_update_employee" />
+        <item
+            android:id="@+id/nav_filter_employees"
+            android:icon="@drawable/ic_filter_employees_black_24dp"
+            android:title="@string/menu_filter_employees" />
+    </group>
+
+</menu>
