@@ -1,5 +1,5 @@
 ### Coding ###
-1. Create an object [Employee](app/src/main/java/ca/judacribz/week3weekend_threads/models/Employee.java). The class should have the following member variables:
+1. <b>Create an object [Employee](app/src/main/java/ca/judacribz/week3weekend_threads/models/Employee.java). The class should have the following member variables:</b>
     1. FirstName
     2. LastName
     3. StreetAddress
@@ -9,8 +9,8 @@
     7. TaxID
     8. Position
     9. Department
-2. Create a database (Room or Sqlite) for the Employee object.
-3. Create the following Activities:
+2. <b>Create a database (Room or Sqlite) for the Employee object.</b>
+3. <b>Create the following Activities:</b>
     1. MainActivity
         1. Make this into a splash screen activity.
         2. After any initializations for the applications, start the FilterEmployeeActivity.
@@ -41,17 +41,17 @@
         2. Be able to pass the employee to the following activities.
             1. DeleteEmployeeActivity
             2. UpdateEmployeeActivity
-4. ALL DATABASE OPERATIONS MUST BE HANDLED BY A WORKER THREAD.  You can use any scheme we have covered or one of the following:
+4. <b>ALL DATABASE OPERATIONS MUST BE HANDLED BY A WORKER THREAD.  You can use any scheme we have covered or one of the following:</b>
     1. Loopers
     2. Loaders
     3. ThreadPools
-5. All activities except Main, filter, and list activities must have backward support.  (The back arrow in the left side of action bar)
-6. Main, splash, and list must use single instance, all others must use single task.
-7. Any activity that requires user input must account for configurational changes in some way.
-8. Feel free to experiment with any UI element
+5. <b>All activities except Main, filter, and list activities must have backward support.  (The back arrow in the left side of action bar)</b>
+6. <b>Main, splash, and list must use single instance, all others must use single task.</b>
+7. <b>Any activity that requires user input must account for configurational changes in some way.</b>
+8. <b>Feel free to experiment with any UI element</b>
 
 ### Research ###
-1. What are loaders and how do we implement loaders?
+1. <b>What are loaders and how do we implement loaders?</b>
 * What?
     * lets you load data from a content provider or other data source to display.
     * runs on separate threads to prevent unresponsive UI.
@@ -71,21 +71,21 @@
     * Loader, an abstract class, which Android has 2 implementations of:
         * AsyncTaskLoader: A Loader that provides AsyncTask to perform background operations.
         * CusorLoader: A Loader implementation used to get data from content providers through content resolvers.
-2. What is an AsyncTaskLoader?
+2. <b>What is an AsyncTaskLoader?</b>
 * A class that implements the Loader class and loads data in the background and reassociates background tasks with the activity, even after configuration change.
 * Changing orientation in an activity still yields same results for the UI.
-3. What is a Handler Thread for?
+3. <b>What is a Handler Thread for?</b>
 * A Handler allows you to communicate back with the UI thread from a background thread.
 * Allows you to send and process Message and Runnable objects asscoiated with a thread's MessageQueue.
-4. What are some common threading restrictions in android?
+4. <b>What are some common threading restrictions in android?</b>
 * Cannot update the UI directly from a background thread.
 * Cannot run long running processes on the UI thread, such as pulling data from the internet.
-5. What are thread pools and thread pool executors?
+5. <b>What are thread pools and thread pool executors?</b>
 * A thread pool is a single FIFO task queue with a group of worker threads.
 * The producers, such as the UI thread, sends tasks to the task queue.
 * Whenever worker threads in the thread pool become available, they remove the taks from the front of the queue and start running them.
 * ThreadPoolExecuter allows you to specify how many core threads and max threads the pool should create and the keep alive time for the idle threads.
-6. Define the following thread synchronization approaches:
+6. <b>Define the following thread synchronization approaches:</b>
 * Locks
     * Protects access to some kind of shared resource. 
     * If you own a lock, you can access the protected shared resource.
@@ -105,13 +105,13 @@
 * Atomic
     * An operation being isolated from other operations that may be happening at the same time.
     * Operations done through assembly language.
-7. Define Deadlock conditions.
+7. <b>Define Deadlock conditions.</b>
 * A situation where a set of processes are blocked because each process is holding a resource and waiting for another resource acquired by some other process.
-8. Define Race conditions.
+8. <b>Define Race conditions.</b>
 * An undesirable situation that occurs when a device or system attemps to perform two or more operations at the same time, but because of the nature of the device or system, the operations must be done in the proper sequence to be done correctly.
-9. What is a memory leak?
+9. <b>What is a memory leak?</b>
 * A resource leak that occurs when a computer program incorrectly manages memory allocations in such a way that meory which is no longer needed is not released.
-10. What is an ANR and what are some common causes?
+10. <b>What is an ANR and what are some common causes?</b>
 * When the UI thread of an Android app is blocked for too long, and Application Not Responding error is triggered.
 * When an activity has not responeded to an input within 5 seconds.
 * When a broadcast receiver has not finished executing within 10 seconds.
