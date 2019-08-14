@@ -9,7 +9,7 @@
     7. TaxID
     8. Position
     9. Department
-2. <b>Create a database (Room or Sqlite) for the Employee object.</b>
+2. <b>Create a [database](app/src/main/java/ca/judacribz/week3weekend_threads/models) (Room or Sqlite) for the Employee object.</b>
 3. <b>Create the following Activities:</b>
     1. [MainActivity](app/src/main/java/ca/judacribz/week3weekend_threads/MainActivity.java)
         1. Make this into a splash screen activity.
