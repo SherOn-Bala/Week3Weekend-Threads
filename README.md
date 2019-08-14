@@ -81,14 +81,38 @@
 * Cannot update the UI directly from a background thread.
 * Cannot run long running processes on the UI thread, such as pulling data from the internet.
 5. What are thread pools and thread pool executors?
+* A thread pool is a single FIFO task queue with a group of worker threads.
+* The producers, such as the UI thread, sends tasks to the task queue.
+* Whenever worker threads in the thread pool become available, they remove the taks from the front of the queue and start running them.
+* ThreadPoolExecuter allows you to specify how many core threads and max threads the pool should create and the keep alive time for the idle threads.
 6. Define the following thread synchronization approaches:
-        - Locks
-        - Mutex
-        - Semaphores
-        - Synchronized
-        - Volatile
-        - Atomic
+* Locks
+    * Protects access to some kind of shared resource. 
+    * If you own a lock, you can access the protected shared resource.
+* Mutex
+    * Mutual exclusion refers to the type of lockable object ath can be owned by exactly one thread at a time.
+    * Only the tread that aquired the lock can release the lock.
+* Semaphores
+    * Similar to mutex, but allows x number of threads to enter.
+    * Can be used to limit the number of cpu, io or ram intensive tasks running at the same time.
+* Synchronized
+    * Allows only one thread to be executing on an object at a time.
+    * All other threads trying to access the same object will wait in line.
+* Volatile
+    * Indicates that a variables value will be modified by different threads.
+    * The value of a volatile variable will never be cached and will go straight to main memory.
+    * Access to the variable acts as though it is enclosed in a synchronized  block.
+* Atomic
+    * An operation being isolated from other operations that may be happening at the same time.
+    * Operations done through assembly language.
 7. Define Deadlock conditions.
+* A situation where a set of processes are blocked because each process is holding a resource and waiting for another resource acquired by some other process.
 8. Define Race conditions.
+* An undesirable situation that occurs when a device or system attemps to perform two or more operations at the same time, but because of the nature of the device or system, the operations must be done in the proper sequence to be done correctly.
 9. What is a memory leak?
+* A resource leak that occurs when a computer program incorrectly manages memory allocations in such a way that meory which is no longer needed is not released.
 10. What is an ANR and what are some common causes?
+* When the UI thread of an Android app is blocked for too long, and Application Not Responding error is triggered.
+* When an activity has not responeded to an input within 5 seconds.
+* When a broadcast receiver has not finished executing within 10 seconds.
+* Long running task on the main thread.
