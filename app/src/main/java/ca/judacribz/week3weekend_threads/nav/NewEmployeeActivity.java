@@ -7,8 +7,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 import ca.judacribz.week3weekend_threads.R;
 import ca.judacribz.week3weekend_threads.models.Employee;
@@ -18,7 +20,6 @@ import static ca.judacribz.week3weekend_threads.util.UI.setupActionBar;
 
 public class NewEmployeeActivity extends AppCompatActivity {
 
-    public static final String EXTRA_EMPLOYEE = "ca.judacribz.week3weekend_threads.EXTRA_EMPLOYEE";
     EditText
             etFirstName,
             etLastName,
@@ -34,7 +35,8 @@ public class NewEmployeeActivity extends AppCompatActivity {
     int numFields;
     ArrayList<String> etList;
     Intent employeeIntent;
-EmployeeViewModel viewModel;
+    EmployeeViewModel viewModel;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -72,6 +74,15 @@ EmployeeViewModel viewModel;
                     etList.get(8)
             ));
             clearEts();
+
+            Toast.makeText(this, String.format(
+                    Locale.US,
+                    getString(R.string.insert_employee),
+                    etList.get(0),
+                    etList.get(1)
+            ), Toast.LENGTH_SHORT).show();
+
+            finish();
         }
     }
 

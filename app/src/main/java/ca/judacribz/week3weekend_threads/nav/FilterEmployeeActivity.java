@@ -10,7 +10,6 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
-import android.widget.Toast;
 
 import java.util.List;
 import java.util.Objects;
@@ -44,7 +43,7 @@ public class FilterEmployeeActivity extends AppCompatActivity {
         Objects.requireNonNull(getSupportActionBar()).setTitle(R.string.filter_employees);
 
         /* Spinner Setup */
-        sprDepartment = findViewById(R.id.sprDepartment);
+        sprDepartment = findViewById(R.id.sprEmployee);
         sprPosition = findViewById(R.id.sprPosition);
 
         viewModel = ViewModelProviders.of(this).get(EmployeeViewModel.class);

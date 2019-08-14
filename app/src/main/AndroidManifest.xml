@@ -15,7 +15,7 @@
             android:launchMode="singleInstance"
             android:theme="@style/AppTheme.NoActionBar"/>
         <activity
-            android:name=".EmployeeDetailsActivity"
+            android:name=".list.EmployeeDetailsActivity"
             android:launchMode="singleInstance" />
         <activity
             android:name=".nav.UpdateEmployeeActivity"

@@ -1,16 +1,13 @@
 package ca.judacribz.week3weekend_threads.util;
 
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.ActionBar;
-import android.app.Activity;
 import android.content.Context;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
-import java.util.List;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBar;
 
-import ca.judacribz.week3weekend_threads.R;
-import ca.judacribz.week3weekend_threads.nav.FilterEmployeeActivity;
+import java.util.List;
 
 public class UI {
     public static void setupActionBar(@Nullable ActionBar actionBar, int titleId) {

@@ -61,4 +61,13 @@ class EmployeeRepository {
             }
         }).start();
     }
+
+    void update(final Employee employee) {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                employeeDao.updateEmployee(employee);
+            }
+        }).start();
+    }
 }

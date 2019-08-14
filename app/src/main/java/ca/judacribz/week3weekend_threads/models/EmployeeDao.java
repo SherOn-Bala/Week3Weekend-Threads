@@ -35,7 +35,9 @@ public interface EmployeeDao {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     void insert(Employee employee);
 
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    void updateEmployee(Employee employee);
+
     @Delete
     void deleteEmployees(Employee... employees);
-
 }

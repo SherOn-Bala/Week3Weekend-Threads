@@ -13,12 +13,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 import java.util.Locale;
 
-import ca.judacribz.week3weekend_threads.EmployeeDetailsActivity;
 import ca.judacribz.week3weekend_threads.R;
 import ca.judacribz.week3weekend_threads.models.Employee;
 import ca.judacribz.week3weekend_threads.list.EmployeeAdapter.*;
 
 public class EmployeeAdapter extends RecyclerView.Adapter<EmployeeHolder> {
+    public static final String EXTRA_EMPLOYEE =
+            "ca.judacribz.week3weekend_threads.list.EXTRA_EMPLOYEE";
     List<Employee> employees;
 
     public EmployeeAdapter(List<Employee> employees) {
@@ -52,6 +53,7 @@ public class EmployeeAdapter extends RecyclerView.Adapter<EmployeeHolder> {
                 tvPosition,
                 tvDepartment;
         Resources resources;
+        Employee employee;
 
         EmployeeHolder(@NonNull View itemView) {
             super(itemView);
@@ -64,13 +66,15 @@ public class EmployeeAdapter extends RecyclerView.Adapter<EmployeeHolder> {
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    view.getContext().startActivity(new Intent(
-                            view.getContext(), EmployeeDetailsActivity.class));
+                    Intent intent = new Intent(view.getContext(), EmployeeDetailsActivity.class);
+                    intent.putExtra(EXTRA_EMPLOYEE, employee);
+                    view.getContext().startActivity(intent);
                 }
             });
         }
 
         void setTextViews(Employee employee) {
+            this.employee = employee;
             tvTaxId.setText(employee.getTaxId());
             tvName.setText(String.format(
                     Locale.US,

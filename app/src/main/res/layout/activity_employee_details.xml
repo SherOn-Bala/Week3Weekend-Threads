@@ -4,6 +4,117 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".EmployeeDetailsActivity">
+    tools:context=".list.EmployeeDetailsActivity">
 
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/nsvForm"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:padding="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clForm"
+            android:layout_width="match_parent"
+            android:layout_height="0dp">
+
+            <EditText
+                android:id="@+id/etFirstName"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:layout_marginBottom="5dp"
+                android:focusable="false"
+                android:hint="@string/first_name"
+                android:inputType="textPersonName"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <EditText
+                android:id="@+id/etLastName"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:focusable="false"
+                android:hint="@string/last_name"
+                android:inputType="textPersonName"
+                app:layout_constraintTop_toBottomOf="@id/etFirstName" />
+
+            <EditText
+                android:id="@+id/etStreetAddress"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:focusable="false"
+                android:hint="@string/street_address"
+                android:inputType="textPostalAddress"
+                app:layout_constraintTop_toBottomOf="@id/etLastName" />
+
+            <EditText
+                android:id="@+id/etCity"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:focusable="false"
+                android:hint="@string/city"
+                android:inputType="text"
+                app:layout_constraintTop_toBottomOf="@id/etStreetAddress" />
+
+            <EditText
+                android:id="@+id/etState"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:focusable="false"
+                android:hint="@string/state"
+                android:inputType="text"
+                app:layout_constraintTop_toBottomOf="@id/etCity" />
+
+            <EditText
+                android:id="@+id/etZip"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:focusable="false"
+                android:hint="@string/zip_code"
+                android:inputType="text"
+                app:layout_constraintTop_toBottomOf="@id/etState" />
+
+            <EditText
+                android:id="@+id/etTaxId"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:focusable="false"
+                android:hint="@string/tax_id"
+                android:inputType="text"
+                app:layout_constraintTop_toBottomOf="@id/etZip" />
+
+            <EditText
+                android:id="@+id/etPosition"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:focusable="false"
+                android:hint="@string/position"
+                android:inputType="text"
+                app:layout_constraintTop_toBottomOf="@id/etTaxId" />
+
+            <EditText
+                android:id="@+id/etDepartment"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:layout_marginTop="5dp"
+                android:focusable="false"
+                android:hint="@string/department"
+                android:inputType="text"
+                app:layout_constraintTop_toBottomOf="@id/etPosition" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -6,10 +6,19 @@ import android.os.Parcelable;
 import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
+
+import ca.judacribz.week3weekend_threads.R;
 
 @Entity(tableName = "employee_table")
 public class Employee implements Parcelable {
+    @Ignore
+    private static final String EMP_SHORT_FORM = "%s, %s (%s)";
 
     @ColumnInfo(name = "first_name")
     String firstName;
@@ -156,6 +165,25 @@ public class Employee implements Parcelable {
         this.department = department;
     }
 
+
+    public static List<String> getSpinnerItemsToEmployee(List<Employee> employees) {
+        List<String> emps = new ArrayList<>();
+        for (Employee employee : employees) {
+            emps.add(getEmpShortForm(employee));
+        }
+
+        return emps;
+    }
+
+    public static String getEmpShortForm(Employee employee) {
+        return String.format(
+                Locale.US,
+                EMP_SHORT_FORM,
+                employee.getLastName(),
+                employee.getFirstName(),
+                employee.getPosition()
+        );
+    }
     @Override
     public int describeContents() {
         return 0;

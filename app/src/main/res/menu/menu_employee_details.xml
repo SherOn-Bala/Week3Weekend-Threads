@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/act_update"
+        android:icon="@drawable/ic_update_employee_black_24dp"
+        android:orderInCategory="100"
+        android:title="@string/delete_employee"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/act_delete"
+        android:icon="@drawable/ic_delete_employee_black_24dp"
+        android:orderInCategory="200"
+        android:title="@string/delete_employee"
+        app:showAsAction="ifRoom" />
+</menu>
