@@ -1,7 +1,6 @@
 package ca.judacribz.week3weekend_threads.models;
 
 import android.app.Application;
-import android.os.AsyncTask;
 
 import androidx.lifecycle.LiveData;
 
@@ -26,13 +25,18 @@ class EmployeeRepository {
         return employeeDao.getPositionsByDepartment(department);
     }
 
-    LiveData<List<Employee>> getEmployeesByPosition(String position) {
-        return employeeDao.getEmployeesByPosition(position);
+    LiveData<List<Employee>> getEmployeesByPositionDepartment(String position, String department) {
+        return employeeDao.getEmployeesByPositionDepartment(position, department);
     }
 
     LiveData<List<Employee>> getEmployeesByDepartment(String department){
         return employeeDao.getEmployeesByDepartment(department);
     }
+
+    LiveData<List<Employee>> getEmployeesByPosition(String position) {
+        return employeeDao.getEmployeesByPosition(position);
+    }
+
     LiveData<List<String>> getAllDepartments(){
         return employeeDao.getAllDepartments();
     }
@@ -40,22 +44,21 @@ class EmployeeRepository {
         return employeeDao.getAllPositions();
     }
 
-    void insert(Employee Employee) {
-        new insertAsyncTask(employeeDao).execute(Employee);
+    void insert(final Employee employee) {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                employeeDao.insert(employee);
+            }
+        }).start();
     }
 
-    private static class insertAsyncTask extends AsyncTask<Employee, Void, Void> {
-
-        private EmployeeDao employeeTaskDao;
-
-        insertAsyncTask(EmployeeDao dao) {
-            employeeTaskDao = dao;
-        }
-
-        @Override
-        protected Void doInBackground(final Employee... params) {
-            employeeTaskDao.insert(params[0]);
-            return null;
-        }
+    void deleteEmployees(final Employee... employees) {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                employeeDao.deleteEmployees(employees);
+            }
+        }).start();
     }
 }

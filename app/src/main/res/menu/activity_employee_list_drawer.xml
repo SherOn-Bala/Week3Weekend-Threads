@@ -25,5 +25,4 @@
             android:icon="@drawable/ic_filter_employees_black_24dp"
             android:title="@string/menu_filter_employees" />
     </group>
-
 </menu>

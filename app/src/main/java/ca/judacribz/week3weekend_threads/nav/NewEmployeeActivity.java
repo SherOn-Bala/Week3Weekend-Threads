@@ -1,6 +1,7 @@
-package ca.judacribz.week3weekend_threads;
+package ca.judacribz.week3weekend_threads.nav;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProviders;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,7 +10,11 @@ import android.widget.EditText;
 
 import java.util.ArrayList;
 
+import ca.judacribz.week3weekend_threads.R;
 import ca.judacribz.week3weekend_threads.models.Employee;
+import ca.judacribz.week3weekend_threads.models.EmployeeViewModel;
+
+import static ca.judacribz.week3weekend_threads.util.UI.setupActionBar;
 
 public class NewEmployeeActivity extends AppCompatActivity {
 
@@ -29,12 +34,14 @@ public class NewEmployeeActivity extends AppCompatActivity {
     int numFields;
     ArrayList<String> etList;
     Intent employeeIntent;
-
+EmployeeViewModel viewModel;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_employee);
+        setupActionBar(getSupportActionBar(), R.string.add_new_employee);
 
+        viewModel = ViewModelProviders.of(this).get(EmployeeViewModel.class);
         ets = new EditText[]{
                 etFirstName = findViewById(R.id.etFirstName),
                 etLastName = findViewById(R.id.etLastName),
@@ -53,7 +60,7 @@ public class NewEmployeeActivity extends AppCompatActivity {
 
     public void addEmployee(View view) {
         if (checkEts()) {
-            employeeIntent.putExtra(EXTRA_EMPLOYEE, new Employee(
+            viewModel.insert(new Employee(
                     etList.get(0),
                     etList.get(1),
                     etList.get(2),
@@ -64,7 +71,7 @@ public class NewEmployeeActivity extends AppCompatActivity {
                     etList.get(7),
                     etList.get(8)
             ));
-            setResult(RESULT_OK, employeeIntent);
+            clearEts();
         }
     }
 
@@ -82,5 +89,17 @@ public class NewEmployeeActivity extends AppCompatActivity {
         }
 
         return etList.size() == numFields;
+    }
+
+    private void clearEts() {
+        for (EditText et : ets) {
+            et.setText("");
+        }
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
     }
 }

@@ -1,5 +1,6 @@
 package ca.judacribz.week3weekend_threads.list;
 
+import android.content.Intent;
 import android.content.res.Resources;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 import java.util.Locale;
 
+import ca.judacribz.week3weekend_threads.EmployeeDetailsActivity;
 import ca.judacribz.week3weekend_threads.R;
 import ca.judacribz.week3weekend_threads.models.Employee;
 import ca.judacribz.week3weekend_threads.list.EmployeeAdapter.*;
@@ -58,6 +60,14 @@ public class EmployeeAdapter extends RecyclerView.Adapter<EmployeeHolder> {
             tvName = itemView.findViewById(R.id.tvName);
             tvPosition = itemView.findViewById(R.id.tvPosition);
             tvDepartment = itemView.findViewById(R.id.tvDepartment);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    view.getContext().startActivity(new Intent(
+                            view.getContext(), EmployeeDetailsActivity.class));
+                }
+            });
         }
 
         void setTextViews(Employee employee) {

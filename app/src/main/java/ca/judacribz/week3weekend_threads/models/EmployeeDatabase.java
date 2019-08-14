@@ -53,7 +53,6 @@ public abstract class EmployeeDatabase extends RoomDatabase {
 
         @Override
         protected Void doInBackground(final Void... params) {
-            employeeDao.deleteAll();
 
             employeeDao.insert(new Employee("Sheron", "Balasingam", "30 Avenida Street", "Markham", "ON", "L3S 4J4", "416-509-7437", "Android Developer", "Consultants"));
             employeeDao.insert(new Employee("James", "Morasca", "3 Mcauley Dr", "Ashland", "OH", "44805", "419-503-2484", "Technical Recruiter", "Human Resources"));
@@ -62,7 +61,7 @@ public abstract class EmployeeDatabase extends RoomDatabase {
             employeeDao.insert(new Employee("Minnehaha", "Darakjy", "4 B Blue Ridge Blvd", "Livingston", "MI", "48116", "810-292-9388", "Exchange Consultant", "Consultants"));
             employeeDao.insert(new Employee("Abel", "Wieser", "5 Boston Ave #88", "Sioux Falls", "SD", "57105", "605-414-2147", "Accounts", "Human Resources"));
             employeeDao.insert(new Employee("Graciela", "Shinko", "426 Wolf St", "Jefferson", "LA", "70002", "504-979-9175", "Exchange Consultant", "Consultants"));
-            employeeDao.insert(new Employee("Leota", "Stenseth", "45 E Liberty St", "Bergen", "NJ", "07660", "201-709-6245", "Android Developer", "Human Resources"));
+            employeeDao.insert(new Employee("Leota", "Stenseth", "45 E Liberty St", "Bergen", "NJ", "07660", "201-709-6245", "Android Developer", "Consultants"));
             employeeDao.insert(new Employee("Donette", "Malet", "209 Decker Dr", "Philadelphia", "PA", "19132", "215-907-9111", "iOS Developer", "Consultants"));
             employeeDao.insert(new Employee("Albina", "Montgomery", "76 Brooks St #9", "Hunterdon", "NJ", "08822", "908-877-6135", "Senior Accountant", "Accounting"));
             employeeDao.insert(new Employee("Jose", "Wenner", "4545 Courthouse Rd", "Nassau", "NY", "11590", "516-968-6051", "Marketing Lead", "Business"));

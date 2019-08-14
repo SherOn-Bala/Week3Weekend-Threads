@@ -1,4 +1,4 @@
-package ca.judacribz.week3weekend_threads;
+package ca.judacribz.week3weekend_threads.nav;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
@@ -10,11 +10,16 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import java.util.List;
+import java.util.Objects;
 
+import ca.judacribz.week3weekend_threads.R;
 import ca.judacribz.week3weekend_threads.list.EmployeeListActivity;
 import ca.judacribz.week3weekend_threads.models.EmployeeViewModel;
+
+import static ca.judacribz.week3weekend_threads.util.UI.setSpinnerAdapter;
 
 public class FilterEmployeeActivity extends AppCompatActivity {
 
@@ -36,6 +41,7 @@ public class FilterEmployeeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_filter_employee);
+        Objects.requireNonNull(getSupportActionBar()).setTitle(R.string.filter_employees);
 
         /* Spinner Setup */
         sprDepartment = findViewById(R.id.sprDepartment);
@@ -45,53 +51,41 @@ public class FilterEmployeeActivity extends AppCompatActivity {
         viewModel.getAllDepartments().observe(this, new Observer<List<String>>() {
             @Override
             public void onChanged(List<String> departments) {
-                departmentAdapter = new ArrayAdapter<>(
-                        FilterEmployeeActivity.this,
-                        android.R.layout.simple_spinner_item,
-                        departments
+                setSpinnerAdapter(
+                        getApplicationContext(),
+                        sprDepartment,
+                        departments,
+                        R.string.default_department
                 );
-                departmentAdapter.setDropDownViewResource(
-                        android.R.layout.simple_spinner_dropdown_item
-                );
-                sprDepartment.setAdapter(departmentAdapter);
-            }
-        });
-        viewModel.getAllPositions().observe(this, new Observer<List<String>>() {
-            @Override
-            public void onChanged(List<String> positions) {
-                positionAdapter = new ArrayAdapter<>(
-                        FilterEmployeeActivity.this,
-                        android.R.layout.simple_spinner_item,
-                        positions
-                );
-                positionAdapter.setDropDownViewResource(
-                        android.R.layout.simple_spinner_dropdown_item
-                );
-                sprPosition.setAdapter(positionAdapter);
             }
         });
 
+        setAllPositions();
 
         /* Selection Listeners */
         sprDepartment.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int pos, long l) {
-                viewModel.getPositionsByDepartment(
-                        department = parent.getItemAtPosition(pos).toString()
-                ).observe(FilterEmployeeActivity.this, new Observer<List<String>>() {
-                    @Override
-                    public void onChanged(List<String> positions) {
-                        positionAdapter = new ArrayAdapter<>(
-                                FilterEmployeeActivity.this,
-                                android.R.layout.simple_spinner_item,
-                                positions
-                        );
-                        positionAdapter.setDropDownViewResource(
-                                android.R.layout.simple_spinner_dropdown_item
-                        );
-                        sprPosition.setAdapter(positionAdapter);
-                    }
-                });
+
+                if (!getString(R.string.default_department).equals(
+                        department = parent.getItemAtPosition(pos).toString())
+                ) {
+                    viewModel.getPositionsByDepartment(
+                            department
+                    ).observe(FilterEmployeeActivity.this, new Observer<List<String>>() {
+                        @Override
+                        public void onChanged(List<String> positions) {
+                            setSpinnerAdapter(
+                                    getApplicationContext(),
+                                    sprPosition,
+                                    positions,
+                                    R.string.default_position
+                            );
+                        }
+                    });
+                } else {
+                    setAllPositions();
+                }
             }
 
             @Override
@@ -99,10 +93,11 @@ public class FilterEmployeeActivity extends AppCompatActivity {
             }
         });
 
+
         sprPosition.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int pos, long l) {
-                        position = parent.getItemAtPosition(pos).toString();
+                position = parent.getItemAtPosition(pos).toString();
             }
 
             @Override
@@ -111,16 +106,31 @@ public class FilterEmployeeActivity extends AppCompatActivity {
         });
     }
 
-    public void getEmployees(View view) {
-        if (department != null) {
-            Intent intent = new Intent(this, EmployeeListActivity.class);
-            intent.putExtra(EXTRA_DEPARTMENT, department);
-
-            if (position != null) {
-                intent.putExtra(EXTRA_POSITION, position);
+    private void setAllPositions() {
+        viewModel.getAllPositions().observe(this, new Observer<List<String>>() {
+            @Override
+            public void onChanged(List<String> positions) {
+                setSpinnerAdapter(
+                        getApplicationContext(),
+                        sprPosition,
+                        positions,
+                        R.string.default_position
+                );
             }
+        });
+    }
 
-            startActivity(intent);
+    public void getEmployees(View view) {
+        Intent intent = new Intent(this, EmployeeListActivity.class);
+
+        if (!getString(R.string.default_department).equals(department)) {
+            intent.putExtra(EXTRA_DEPARTMENT, department);
         }
+
+        if (!getString(R.string.default_position).equals(position)) {
+            intent.putExtra(EXTRA_POSITION, position);
+        }
+
+        startActivity(intent);
     }
 }

@@ -22,16 +22,20 @@ public class EmployeeViewModel extends AndroidViewModel {
         return employees;
     }
 
-    public LiveData<List<String>> getPositionsByDepartment(String department) {
-        return employeeRepo.getPositionsByDepartment(department);
+    public LiveData<List<Employee>> getEmployeesByPositionDepartment(String position, String department) {
+        return employeeRepo.getEmployeesByPositionDepartment(position, department);
+    }
+
+    public LiveData<List<Employee>> getEmployeesByDepartment(String department) {
+        return employeeRepo.getEmployeesByDepartment(department);
     }
 
     public LiveData<List<Employee>> getEmployeesByPosition(String position) {
         return employeeRepo.getEmployeesByPosition(position);
     }
 
-    public LiveData<List<Employee>> getEmployeesByDepartment(String department) {
-        return employeeRepo.getEmployeesByDepartment(department);
+    public LiveData<List<String>> getPositionsByDepartment(String department) {
+        return employeeRepo.getPositionsByDepartment(department);
     }
 
     public LiveData<List<String>> getAllDepartments() {
@@ -42,7 +46,11 @@ public class EmployeeViewModel extends AndroidViewModel {
         return employeeRepo.getAllPositions();
     }
 
-    void insert(Employee employee) {
+    public void insert(Employee employee) {
         employeeRepo.insert(employee);
+    }
+
+    public void delete(Employee... employees) {
+        employeeRepo.deleteEmployees(employees);
     }
 }

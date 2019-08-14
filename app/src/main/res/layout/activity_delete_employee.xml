@@ -4,6 +4,32 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".DeleteEmployeeActivity">
+    android:padding="10dp"
+    tools:context=".nav.DeleteEmployeeActivity">
 
+    <Spinner
+        android:id="@+id/sprDepartment"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvEmployee"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_margin="10dp"
+        android:fontFamily="@font/fjalla"
+        android:gravity="center"
+        android:text="@string/choose_delete"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@id/btnDelete"
+        app:layout_constraintTop_toBottomOf="@id/sprDepartment" />
+
+    <Button
+        android:id="@+id/btnDelete"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:onClick="deleteEmployee"
+        android:text="@string/delete_employee"
+        app:layout_constraintBottom_toBottomOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

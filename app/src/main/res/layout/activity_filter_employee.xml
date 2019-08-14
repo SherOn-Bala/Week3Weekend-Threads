@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="10dp"
-    tools:context=".FilterEmployeeActivity">
+    tools:context=".nav.FilterEmployeeActivity">
 
     <TextView
         android:id="@+id/tvDepartment"

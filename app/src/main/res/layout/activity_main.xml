@@ -6,13 +6,49 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:contentDescription="@string/cnt_splash_screen"
+        android:scaleType="center"
+        android:src="@drawable/bg" />
+
+    <ImageView
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginStart="18dp"
+        android:layout_marginBottom="18dp"
+        android:contentDescription="@string/cnt_company_logo"
+        android:scaleType="fitEnd"
+        android:src="@drawable/mac"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
     <TextView
+        android:id="@+id/tvSubtitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
+        android:fontFamily="@font/fjalla"
+        android:gravity="center"
+        android:text="@string/employee_directory"
+        android:textColor="@color/macBlue"
+        android:textSize="35sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <TextView
+        android:id="@+id/tvCompanyName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/black"
+        android:fontFamily="@font/roboto_bold"
+        android:gravity="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:text="@string/mobile_apps"
+        android:textSize="65sp"
+        app:layout_constraintBottom_toTopOf="@id/tvSubtitle" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -18,16 +18,16 @@
             android:name=".EmployeeDetailsActivity"
             android:launchMode="singleInstance" />
         <activity
-            android:name=".UpdateEmployeeActivity"
+            android:name=".nav.UpdateEmployeeActivity"
             android:launchMode="singleInstance" />
         <activity
-            android:name=".DeleteEmployeeActivity"
+            android:name=".nav.DeleteEmployeeActivity"
             android:launchMode="singleInstance" />
         <activity
-            android:name=".NewEmployeeActivity"
+            android:name=".nav.NewEmployeeActivity"
             android:launchMode="singleInstance" />
         <activity
-            android:name=".FilterEmployeeActivity"
+            android:name=".nav.FilterEmployeeActivity"
             android:launchMode="singleTask" />
         <activity
             android:name=".MainActivity"
